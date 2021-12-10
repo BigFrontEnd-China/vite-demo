@@ -1,0 +1,7 @@
+// scss 配置部分
+
+// 基于BEM
+$namespace: ce; // 此处配置在构建里面，方便组件与css命名空间统一配置
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';

@@ -1,0 +1,32 @@
+// flex
+@mixin flex($baseItems: center, $baseFlow: column nowrap, $baseJuestify: flex-start) {
+  display: flex;
+  align-items: $baseItems;
+  -webit-align-items: $baseItems;
+  flex-flow: $baseFlow;
+  justify-content: $baseJuestify;
+}
+
+// 宽度
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 清除浮动
+@mixin clearfix {
+  zoom: 1;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+// 文字溢出
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

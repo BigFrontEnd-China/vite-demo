@@ -1,0 +1,47 @@
+// bem规范
+// b: 类似于命名空间
+// e: 是块的子节点。为了表明某个东西是一个元素
+// m: 修饰符是改变某个块的外观的标志
+@import '_config';
+
+@mixin B($block) {
+  $B: $namespace + '-' + $block !global;
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin E($element) {
+  $E: $element;
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin M($modifier) {
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ','};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
